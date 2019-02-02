@@ -14,7 +14,9 @@ export default class MovieItem extends React.Component {
     </View>
     <View style={styles.buttonContainer}>
       <Button
-        onPress={this.props.onRemoveMovie}
+        onPress={ () => {
+            this.props.onRemoveMovie(this.props.movie);
+        } }
         title="-"
         color="#841584"
       />
@@ -27,16 +29,24 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'row',
-        backgroundColor: '#d6d6d6',
+        marginHorizontal: 10,
+        marginVertical: 3,
+        backgroundColor: '#ffffff',
+        borderRadius: 5,
+        borderWidth: 1,
+        borderColor: '#d6d6d6'
     },
     movieTitleContainer: {
-        flex: 3
+        flex: 3,
+        marginLeft: 10,
+        justifyContent: 'center'
     },
     movieYearContainer: {
-        flex: 2
+        flex: 2,
+        justifyContent: 'center'
     },
     movieYear: {
-        color: '#40c987',
+        color: '#2e5da7',
         fontSize: 12,
         fontWeight: 'bold'
     },

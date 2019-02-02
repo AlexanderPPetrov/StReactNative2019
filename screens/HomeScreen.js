@@ -47,7 +47,12 @@ export default class HomeScreen extends React.Component {
 
     }
     onRemoveMovie = (movie) => {
-        console.log('remove movie')
+        const movies = this.state.movies.filter(
+            m => m.id !== movie.id);
+
+        this.setState({
+            movies
+        });
     }
     loadMovies = () => {
         fetch('https://facebook.github.io/react-native/movies.json')
