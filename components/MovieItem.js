@@ -1,11 +1,13 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
+import ListItem from './ListItem';
+import colors from '../constants/Colors';
 
 export default class MovieItem extends React.Component {
   componentDidMount = () => {
     console.log(this.props)
   }
-  render = () => <View style={styles.container}>
+  render = () => <ListItem>
     <View style={styles.movieTitleContainer}>
       <Text style={styles.movieTitle}>{this.props.movie.title}</Text>
     </View>
@@ -18,24 +20,15 @@ export default class MovieItem extends React.Component {
             this.props.onRemoveMovie(this.props.movie);
         } }
         title="-"
-        color="#841584"
+        color={colors.buttonPrimary}
       />
     </View>
-  </View>
+  </ListItem>
 
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'row',
-        marginHorizontal: 10,
-        marginVertical: 3,
-        backgroundColor: '#ffffff',
-        borderRadius: 5,
-        borderWidth: 1,
-        borderColor: '#d6d6d6'
-    },
+
     movieTitleContainer: {
         flex: 3,
         marginLeft: 10,
@@ -46,13 +39,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     movieYear: {
-        color: '#2e5da7',
+        color: colors.textSecondary,
         fontSize: 12,
-        fontWeight: 'bold'
     },
     movieTitle: {
-        color: '#3b849f',
-        fontSize: 14
+        color: colors.textPrimary,
+        fontSize: 14,
+        fontWeight: 'bold'
     },
     buttonContainer: {
         flex: 1

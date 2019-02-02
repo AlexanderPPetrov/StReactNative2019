@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, StyleSheet } from "react-native";
+import { Constants } from "expo";
+
+import colors from '../constants/Colors';
 
 const datas = [
     {
@@ -32,11 +35,19 @@ class SideBar extends Component {
 
     render() {
         return (
-            <View>
+            <View style={styles.sidebar}>
                 <Text>SIDEBAR TEXT</Text>
             </View>
         );
     }
 }
-
 export default SideBar;
+
+const styles = StyleSheet.create({
+    sidebar: {
+        padding: 10,
+        flex: 1,
+        backgroundColor: colors.sidebarBackground,
+        paddingTop: Constants.statusBarHeight
+    },
+});
