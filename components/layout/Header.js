@@ -1,10 +1,11 @@
 import React from 'react';
 import { FontAwesome } from '@expo/vector-icons';
 import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
+import { connect } from "react-redux";
 
 import colors from '../../constants/Colors';
 
-export default class Header extends React.Component {
+class Header extends React.Component {
 
     toggleSidebar = () => {
         this.props.navigation.toggleDrawer();
@@ -20,6 +21,7 @@ export default class Header extends React.Component {
             <Text style={styles.title}>{this.props.title.toUpperCase()}</Text>
         </View>
         <View style={styles.right}>
+            <Text style={styles.counter}>{this.props.movies.length}</Text>
         </View>
     </View>
 }
@@ -45,6 +47,16 @@ const styles = StyleSheet.create({
     },
     right: {
         width: 32,
-        padding: 1
+        padding: 1,
+
+    },
+    counter: {
+        color: colors.textPrimary,
+        fontWeight: "bold",
+        fontSize: 20
     }
 });
+
+const mapStateToProps = state => ({ ...state });
+
+export default connect(mapStateToProps)(Header);

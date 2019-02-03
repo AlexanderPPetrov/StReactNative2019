@@ -8,22 +8,25 @@ import MovieItem from '../components/MovieItem';
 import Layout from '../components/layout/Layout';
 import Card from '../components/Card';
 import colors from '../constants/Colors';
+import { connect } from "react-redux";
+import * as actions from "../redux/actions";
 
-export default class HomeScreen extends React.Component {
+import { bindActionCreators } from "redux";
+
+class HomeScreen extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            isLoading: true,
-            movies: []
+            isLoading: true
         }
     }
 
     componentDidMount = () => {
         this.loadMovies();
         console.log(this.props.navigation)
-    }
+    };
 
     render = () =>
         <Layout title="Начало" navigation={this.props.navigation}>
@@ -41,7 +44,7 @@ export default class HomeScreen extends React.Component {
             return <Text style={styles.helloText}>Movies are loading</Text>
         }
         return <FlatList
-            data={this.state.movies}
+            data={this.props.movies}
             renderItem={({item: movie}) => <MovieItem
                 movie={movie}
                 onRemoveMovie={this.onRemoveMovie}
@@ -50,24 +53,24 @@ export default class HomeScreen extends React.Component {
         />
 
 
-    }
+    };
     onRemoveMovie = (movie) => {
-        const movies = this.state.movies.filter(
+        const movies = this.props.movies.filter(
             m => m.id !== movie.id);
 
-        this.setState({
-            movies
-        });
-    }
+        this.props.setMovies(movies);
+    };
     loadMovies = () => {
         fetch('https://facebook.github.io/react-native/movies.json')
         .then((response) => response.json())
         .then((responseJson) => {
 
             this.setState({
-                isLoading: false,
-                movies: responseJson.movies,
+                isLoading: false
             });
+
+            this.props.setMovies(responseJson.movies);
+
 
         })
         .catch((error) => {
@@ -90,3 +93,19 @@ const styles = StyleSheet.create({
         color: colors.textPrimary
     },
 });
+
+
+const mapStateToProps = state => {
+    return {
+        movies: state.movies
+    }
+};
+
+const mapStateToDispatch = dispatch => {
+    return bindActionCreators({
+        setMovies: actions.setMovies
+    }, dispatch)
+};
+
+export default
+connect(mapStateToProps, mapStateToDispatch)(HomeScreen);

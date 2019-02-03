@@ -1,0 +1,4 @@
+
+
+export const MOVIES_FETCHED = "MOVIES_FETCHED";
+export const SELECTED_ROUTE = "SELECTED_ROUTE";
