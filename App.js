@@ -2,11 +2,12 @@ import React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { Provider }  from "react-redux";
 import reducers from "./redux/reducers";
-
-const store = createStore(reducers);
+import thunk from 'redux-thunk';
+import ToastContainer from "./components/Toast";
+const store = createStore(reducers, applyMiddleware(thunk));
 
 export default class App extends React.Component {
   state = {
@@ -27,6 +28,7 @@ export default class App extends React.Component {
         <View style={styles.container}>
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
           <Provider store={store}>
+            <ToastContainer />
             <AppNavigator />
           </Provider>
         </View>

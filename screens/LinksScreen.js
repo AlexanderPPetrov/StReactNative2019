@@ -1,20 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Layout from '../components/layout/Layout';
-import Card from '../components/Card';
-import colors from '../constants/Colors';
+import {WebView} from 'react-native';
 export default class LinksScreen extends React.Component {
 
   render = () =>
     <Layout title="Links" navigation={this.props.navigation}>
-      <Card>
-          <Text style={styles.header}>Links</Text>
-      </Card>
+      <WebView
+          source={{uri: 'https://github.com/facebook/react-native'}}
+      />
     </Layout>
 }
-
-const styles = StyleSheet.create({
-    header: {
-    color: colors.textPrimary,
-  },
-});

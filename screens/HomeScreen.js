@@ -10,7 +10,7 @@ import Card from '../components/Card';
 import colors from '../constants/Colors';
 import { connect } from "react-redux";
 import * as actions from "../redux/actions";
-
+import NetworkClient from "../api/NetworkClient";
 import { bindActionCreators } from "redux";
 
 class HomeScreen extends React.Component {
@@ -24,8 +24,7 @@ class HomeScreen extends React.Component {
     }
 
     componentDidMount = () => {
-        this.loadMovies();
-        console.log(this.props.navigation)
+        this.props.getMovies();
     };
 
     render = () =>
@@ -40,7 +39,7 @@ class HomeScreen extends React.Component {
         </Layout>
 
     listMovies = () => {
-        if (this.state.isLoading) {
+        if (!this.props.movies.length) {
             return <Text style={styles.helloText}>Movies are loading</Text>
         }
         return <FlatList
@@ -60,23 +59,6 @@ class HomeScreen extends React.Component {
 
         this.props.setMovies(movies);
     };
-    loadMovies = () => {
-        fetch('https://facebook.github.io/react-native/movies.json')
-        .then((response) => response.json())
-        .then((responseJson) => {
-
-            this.setState({
-                isLoading: false
-            });
-
-            this.props.setMovies(responseJson.movies);
-
-
-        })
-        .catch((error) => {
-            console.error(error);
-        });
-    }
 }
 
 const styles = StyleSheet.create({
@@ -101,9 +83,11 @@ const mapStateToProps = state => {
     }
 };
 
+
 const mapStateToDispatch = dispatch => {
     return bindActionCreators({
-        setMovies: actions.setMovies
+        setMovies: actions.setMovies,
+        getMovies: actions.getMovies
     }, dispatch)
 };
 

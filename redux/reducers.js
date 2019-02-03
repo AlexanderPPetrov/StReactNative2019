@@ -23,4 +23,17 @@ function selectedRoute (state = "Home", action){
     }
 }
 
-export default combineReducers({ movies, selectedRoute });
+function error (state = {}, action){
+    console.log(action.type);
+    switch (action.type) {
+        case types.SET_ERROR: {
+            return { ... action.payload};
+        }
+
+        default:
+            return state;
+    }
+}
+
+
+export default combineReducers({ movies, selectedRoute, error });

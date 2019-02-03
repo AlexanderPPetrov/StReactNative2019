@@ -11,4 +11,5 @@ export default {
     textPrimary: '#ffffff',
     textSecondary: '#a2bae2',
     buttonPrimary: '#2cbbc9',
+    toastBackground: '#000000'
 };
