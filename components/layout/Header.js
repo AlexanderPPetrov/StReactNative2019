@@ -1,20 +1,20 @@
 import React from 'react';
 import { FontAwesome } from '@expo/vector-icons';
-import { TouchableHighlight, View, Text, StyleSheet } from 'react-native';
+import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
 
-import colors from '../constants/Colors';
+import colors from '../../constants/Colors';
 
 export default class Header extends React.Component {
 
     toggleSidebar = () => {
-
+        //TODO toggle drawer
     }
     render = () =>
     <View style={styles.header}>
         <View style={styles.left}>
-            <TouchableHighlight onPress={this.toggleSidebar}>
+            <TouchableOpacity onPress={this.toggleSidebar}>
                 <FontAwesome name="bars" size={32} color={colors.textPrimary} />
-            </TouchableHighlight>
+            </TouchableOpacity>
         </View>
         <View style={styles.center}>
             <Text style={styles.title}>{this.props.title.toUpperCase()}</Text>

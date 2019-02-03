@@ -6,7 +6,7 @@ import {
 
 import colors from '../constants/Colors';
 
-class ListItem extends React.Component {
+export default class ListItem extends React.Component {
 
     render = () => (
         <View style={styles.listItem}>
@@ -14,7 +14,6 @@ class ListItem extends React.Component {
         </View>
     )
 }
-export default ListItem;
 
 const styles = StyleSheet.create({
     listItem: {

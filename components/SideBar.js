@@ -33,13 +33,14 @@ class SideBar extends Component {
         super(props);
     }
 
-    render() {
-        return (
-            <View style={styles.sidebar}>
-                <Text>SIDEBAR TEXT</Text>
-            </View>
-        );
+    componentDidMount = () => {
+        console.log(this.props.navigation)
     }
+    render = () =>
+    <View style={styles.sidebar}>
+        <Text>SIDEBAR TEXT</Text>
+    </View>
+
 }
 export default SideBar;
 

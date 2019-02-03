@@ -4,10 +4,10 @@ import {
     StyleSheet
 } from 'react-native';
 
-import colors from '../constants/Colors';
+import colors from '../../constants/Colors';
 import { Constants, LinearGradient } from 'expo';
 
-class Container extends React.Component {
+export default class Container extends React.Component {
 
     render = () =>
     <View style={styles.container}>
@@ -16,7 +16,6 @@ class Container extends React.Component {
         { this.props.children }
     </View>
 }
-export default Container;
 
 const styles = StyleSheet.create({
     container: {

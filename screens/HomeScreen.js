@@ -1,19 +1,15 @@
 import React from 'react';
 import {
-    Button,
-    Image,
-    ScrollView,
     Text,
-    View, StyleSheet, ListView, FlatList
+    View, StyleSheet, FlatList
 } from 'react-native';
 
 import MovieItem from '../components/MovieItem';
-import Container from '../components/Container';
-import Header from '../components/Header';
-import Body from '../components/Body';
+import Layout from '../components/layout/Layout';
 import Card from '../components/Card';
-import constants from '../constants/Layout';
 import colors from '../constants/Colors';
+import axios from 'axios';
+
 
 export default class HomeScreen extends React.Component {
 
@@ -31,9 +27,7 @@ export default class HomeScreen extends React.Component {
     }
 
     render = () =>
-        <Container>
-            <Header title="Начало"/>
-            <Body>
+        <Layout title="Начало">
             <View style={styles.homeContent}>
                 <Text style={styles.headerSecondary}>React Native</Text>
                 <Text style={styles.headerPrimary}>Software Technologies 2019</Text>
@@ -41,8 +35,7 @@ export default class HomeScreen extends React.Component {
             <Card>
                 {this.listMovies()}
             </Card>
-            </Body>
-        </Container>
+        </Layout>
 
     listMovies = () => {
         if (this.state.isLoading) {
@@ -69,18 +62,18 @@ export default class HomeScreen extends React.Component {
     }
     loadMovies = () => {
         fetch('https://facebook.github.io/react-native/movies.json')
-            .then((response) => response.json())
-            .then((responseJson) => {
+        .then((response) => response.json())
+        .then((responseJson) => {
 
-                this.setState({
-                    isLoading: false,
-                    movies: responseJson.movies,
-                });
-
-            })
-            .catch((error) => {
-                console.error(error);
+            this.setState({
+                isLoading: false,
+                movies: responseJson.movies,
             });
+
+        })
+        .catch((error) => {
+            console.error(error);
+        });
     }
 }
 

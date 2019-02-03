@@ -6,7 +6,7 @@ import {
 
 import colors from '../constants/Colors';
 
-class Card extends React.Component {
+export default class Card extends React.Component {
     render = () => (
         <View style={styles.card}>
             { this.props.children }
@@ -14,7 +14,6 @@ class Card extends React.Component {
 
     )
 }
-export default Card;
 
 const styles = StyleSheet.create({
     card: {
