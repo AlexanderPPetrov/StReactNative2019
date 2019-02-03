@@ -8,8 +8,6 @@ import MovieItem from '../components/MovieItem';
 import Layout from '../components/layout/Layout';
 import Card from '../components/Card';
 import colors from '../constants/Colors';
-import axios from 'axios';
-
 
 export default class HomeScreen extends React.Component {
 
