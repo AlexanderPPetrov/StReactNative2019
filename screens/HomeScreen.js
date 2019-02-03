@@ -22,10 +22,11 @@ export default class HomeScreen extends React.Component {
 
     componentDidMount = () => {
         this.loadMovies();
+        console.log(this.props.navigation)
     }
 
     render = () =>
-        <Layout title="Начало">
+        <Layout title="Начало" navigation={this.props.navigation}>
             <View style={styles.homeContent}>
                 <Text style={styles.headerSecondary}>React Native</Text>
                 <Text style={styles.headerPrimary}>Software Technologies 2019</Text>

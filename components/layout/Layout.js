@@ -11,7 +11,7 @@ import Body from './Body';
 class Layout extends React.Component {
     render = () =>
     <Container>
-        <Header title={this.props.title}/>
+        <Header navigation={this.props.navigation} title={this.props.title}/>
         <Body>
             { this.props.children }
         </Body>

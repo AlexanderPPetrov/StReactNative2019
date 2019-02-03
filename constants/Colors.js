@@ -9,6 +9,6 @@ export default {
     listItemBackground: '#293747',
     listItemBorder: '#293c52',
     textPrimary: '#ffffff',
-    textSecondary: '#7887a7',
+    textSecondary: '#a2bae2',
     buttonPrimary: '#2cbbc9',
 };

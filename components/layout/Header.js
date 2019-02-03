@@ -7,7 +7,7 @@ import colors from '../../constants/Colors';
 export default class Header extends React.Component {
 
     toggleSidebar = () => {
-        //TODO toggle drawer
+        this.props.navigation.toggleDrawer();
     }
     render = () =>
     <View style={styles.header}>
