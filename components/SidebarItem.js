@@ -12,7 +12,7 @@ import colors from '../constants/Colors';
 export default class SidebarItem extends React.Component {
 
     menuItemPressed = () => {
-        console.log(this.props.item, this.props.navigation)
+        this.props.navigation.navigate(this.props.item.route);
     }
     render = () => (
         <TouchableOpacity

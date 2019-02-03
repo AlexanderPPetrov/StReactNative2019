@@ -1,23 +1,20 @@
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
-
+import { View, Text, StyleSheet } from 'react-native';
+import Layout from '../components/layout/Layout';
+import Card from '../components/Card';
+import colors from '../constants/Colors';
 export default class LinksScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Links',
-  };
 
-  render() {
-    return (
-      <Text style={styles.container}>
-        TEXT LINKS SCREEN
-      </Text>
-    );
-  }
+  render = () =>
+    <Layout title="Links" navigation={this.props.navigation}>
+      <Card>
+          <Text style={styles.header}>Links</Text>
+      </Card>
+    </Layout>
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#009900',
+    header: {
+    color: colors.textPrimary,
   },
 });
